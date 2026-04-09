@@ -15,4 +15,42 @@
 //   3. Add a decorator to each property
 // ─────────────────────────────────────────────────────────────────────────────
 
-// TODO: your code here
+import {
+  IsString,
+  IsNotEmpty,
+  IsNumber,
+  IsPositive,
+  IsOptional,
+  MinLength,
+  MaxLength,
+  IsEmail,
+  Min,
+  Max,
+  IsIn,
+  isString,
+
+} from 'class-validator';
+
+export class CreateUserDto{
+
+    @IsString()
+    @IsNotEmpty()
+    @MinLength(2)
+    @MaxLength(50)
+    name: string;
+    
+    @IsEmail()
+    @IsNotEmpty()
+    email: string;
+    
+    @Min(1)
+    @Max(120)
+    @IsNotEmpty()
+    age: number;
+    
+    @IsString()
+    @IsOptional()
+    @IsIn([ 'student' ,'teacher','admin'])
+    role: string;
+
+}

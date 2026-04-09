@@ -7,7 +7,28 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 // TODO: import validators from 'class-validator'
-
+import {
+  IsString,
+  IsNotEmpty,
+  IsNumber,
+  IsPositive,
+  IsOptional,
+  MinLength,
+  MaxLength,
+} from 'class-validator';
 export class UpdateTaskDto {
-  // TODO: implement the DTO (copy fields from CreateTaskDto and make them optional)
+  @IsString()
+  @IsOptional()
+  @MinLength(3)
+  @MaxLength(80)
+  title: string;
+
+  @IsString()
+  @IsOptional()
+  @MaxLength(255)
+  description?: string;
+
+  @IsOptional()
+  status?: 'pending' | 'in-progress' | 'done';
 }
+
