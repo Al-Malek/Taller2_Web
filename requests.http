@@ -1,0 +1,111 @@
+GET http://localhost:3000/products
+
+GET http://localhost:3000/products/1
+
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "name": "Keyboard",
+  "price": 79.99,
+  "description": "Mechanical keyboard"
+}
+
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "name": "Bad",
+  "price": -5
+}
+
+PATCH http://localhost:3000/products/2
+Content-Type: application/json
+
+{
+  "price": 39.99
+}
+
+DELETE http://localhost:3000/products/2
+
+GET http://localhost:3000/tasks
+
+GET http://localhost:3000/tasks?status=pending
+
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "title": "My new task",
+  "status": "pending"
+}
+
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "title": "ab",
+  "status": "flying"
+}
+
+PATCH http://localhost:3000/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Updated title"
+}
+
+DELETE http://localhost:3000/tasks/1
+
+GET http://localhost:3000/users
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Maria",
+  "email": "maria@example.com",
+  "age": 25,
+  "role": "student"
+}
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Maria",
+  "email": "not-an-email",
+  "age": 25
+}
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Oldie",
+  "email": "old@example.com",
+  "age": 200
+}
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Hacker",
+  "email": "hack@example.com",
+  "age": 20,
+  "password": "secret"
+}
+
+GET http://localhost:3000/users/search/email?email=maria@example.com
+
+GET http://localhost:3000/users/1/tasks
+
+PATCH http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+  "name": "Alice Updated"
+}
+
+DELETE http://localhost:3000/users/1

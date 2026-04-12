@@ -20,7 +20,10 @@ export class TasksService {
   ];
   private nextId = 4;
 
-  findAll(): Task[] {
+  findAll(status?: TaskStatus): Task[] {
+    if (status) {
+      return this.tasks.filter((t) => t.status === status);
+    }
     return this.tasks;
   }
 
