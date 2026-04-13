@@ -160,10 +160,19 @@ Open each file in this order and read the comments carefully:
 ### Questions to answer before moving on
 
 1. What happens if you send a POST to `/products` with `price: -5`? Why?
+La petición será rechazada con un error 400 porque la validación del DTO exige que el campo price sea un número positivo, un valor negativo viola esa regla y ValidationPipe devuelve Bad Request.
+
 2. What is the role of `ParseIntPipe` in `@Param('id', ParseIntPipe)`?
+Convierte el parámetro de ruta de texto a número y lanza un 400 si la conversión falla. De esta forma el controlador recibe un número ya tipado y no hay que parsearlo manualmente.
+
 3. What would happen without `@IsNotEmpty()` on `name`?
+Sin IsNotEmpty se podrían aceptar cadenas vacías como válidas mientras cumplan el tipo, lo que permitiría crear recursos con nombre vacío. IsNotEmpty evita esto garantizando que el campo tenga contenido.
+
 4. Why does the service throw `NotFoundException` instead of returning `null`?
+Lanzar NotFoundException produce una respuesta HTTP 404 clara y aprovecha el manejo de excepciones de NestJS, devolver null obligaría a los llamadores a comprobar valores nulos y complicaría el flujo.
+
 5. What is the difference between `@Get()` and `@Get(':id')`?
+La forma sin parámetro define la ruta de colección, por ejemplo /products, para listar recursos; la forma con ':id' define una ruta con un parámetro para obtener un recurso individual por su id. Ambas rutas pueden coexistir porque coinciden con URLs diferentes.
 
 ---
 
